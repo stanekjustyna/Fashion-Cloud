@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Fashion Cloud</title>
+    </head>
+
+    <body>
+
+        <h1>Design your amazing skirt and we will sew it especially for you! </h1>
+
+        <img th:src="@{images/FashionCloud.jpeg}" width="400" height="300"/>
+
+        <form method="POST" th:object="${design}">
+
+            <div class="feat">
+
+                <div class="feature-group" id="sizes">
+                    <h3>Designate your size:</h3>
+                    <div th:each="feature : ${size}">
+                        <input name="features" type="radio" th:value="${feature.id}"/>
+                        <span th:text="${feature.name}">FEATURE</span><br/>
+                    </div>
+                </div>
+
+            </div>
+
+            <button>Submit your skirt</button>
+
+        </form>
+
+    </body>
+
+</html>
