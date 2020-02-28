@@ -19,14 +19,44 @@
                 <div class="feature-group" id="sizes">
                     <h3>Designate your size:</h3>
                     <div th:each="feature : ${size}">
-                        <input name="features" type="radio" th:value="${feature.id}"/>
+                        <input name="size" type="radio" th:value="${feature.id}"/>
+                        <span th:text="${feature.name}">FEATURE</span><br/>
+                    </div>
+                </div>
+
+                <div class="feature-group" id="lengths">
+                    <h3>Pick a length for you:</h3>
+                    <div th:each="feature : ${length}">
+                        <input name="length" type="radio" th:value="${feature.id}"/>
+                        <span th:text="${feature.name}">FEATURE</span><br/>
+                    </div>
+                </div>
+
+                <div class="feature-group" id="colors">
+                    <h3>Choose a color:</h3>
+                    <div th:each="feature : ${color}">
+                        <input name="color" type="radio" th:value="${feature.id}"/>
+                        <span th:text="${feature.name}">FEATURE</span><br/>
+                    </div>
+                </div>
+
+                <div class="feature-group" id="patterns">
+                    <h3>Select a pattern:</h3>
+                    <div th:each="feature : ${pattern}">
+                        <input name="pattern" type="radio" th:value="${feature.id}"/>
                         <span th:text="${feature.name}">FEATURE</span><br/>
                     </div>
                 </div>
 
             </div>
 
-            <button>Submit your skirt</button>
+            <div>
+                <h3>Name your skirt creation:</h3>
+                <input type="text" th:field="*{name}"/>
+                <br/>
+                <br/>
+                <button>Submit your skirt</button>
+            </div>
 
         </form>
 

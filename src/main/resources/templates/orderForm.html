@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Fashion Cloud</title>
+    </head>
+    <body>
+
+        <form method="POST" th:action="@{/orders}" th:object="${order}">
+            <h1>Order your skirt!</h1>
+            <img th:src="@{/images/FashionCloud.jpeg}" width="400" height="300"/><br/>
+            <a th:href="@{/design}" id="another">Design another skirt</a><br/>
+
+            <div th:if="${#fields.hasErrors()}">
+                <span class="validationError">
+                    Please correct the problems below and resubmit.
+                </span>
+            </div>
+
+            <h3>We will deliver ordered skirts to...</h3>
+
+            <label for="name">Name: </label>
+            <input type="text" th:field="*{name}"/>
+            <br/>
+
+            <label for="street">Street address: </label>
+            <input type="text" th:field="*{street}"/>
+            <br/>
+
+            <label for="city">City: </label>
+            <input type="text" th:field="*{city}"/>
+            <br/>
+
+            <label for="state">State: </label>
+            <input type="text" th:field="*{state}"/>
+            <br/>
+
+            <label for="zip">Zip code: </label>
+            <input type="text" th:field="*{zip}"/>
+            <br/>
+
+            <h3>We accept payments with credit cards...</h3>
+
+            <label for="ccNumber">Credit Card #: </label>
+            <input type="text" th:field="*{ccNumber}"/>
+            <br/>
+
+            <label for="ccExpiration">Credit Card expiration: </label>
+            <input type="text" th:field="*{ccExpiration}"/>
+            <br/>
+
+            <label for="ccCVV">Expiration: </label>
+            <input type="text" th:field="*{ccCVV}"/>
+            <br/>
+
+            <input type="submit" value="Submit order"/>
+        </form>
+
+    </body>
+
+</html>

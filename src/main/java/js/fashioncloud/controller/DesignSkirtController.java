@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Arrays;
@@ -45,11 +46,19 @@ public class DesignSkirtController {
         for(Type type : types){
 
             model.addAttribute(type.toString().toLowerCase(), filterByType(features, type));
-
         }
 
         model.addAttribute("design", new Skirt());
 
         return "design";
     }
+
+    @PostMapping
+    public String processDesign(Skirt design){
+
+        log.info("Processing design: " + design);
+
+        return "redirect:/orders/current";
+    }
+
 }
