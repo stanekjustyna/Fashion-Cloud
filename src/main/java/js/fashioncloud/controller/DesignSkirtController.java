@@ -5,14 +5,16 @@ import js.fashioncloud.model.Skirt;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.List;
 
-import static js.fashioncloud.model.Feature.Type;
 import static js.fashioncloud.model.Feature.Type.*;
 import static js.fashioncloud.model.Feature.filterByType;
 
@@ -23,6 +25,30 @@ public class DesignSkirtController {
 
     @GetMapping
     public String showDesignForm(Model model){
+
+        this.provideFeaturesData(model);
+
+        model.addAttribute("design", new Skirt());
+
+        return "design";
+    }
+
+    @PostMapping
+    public String processDesign(@Valid @ModelAttribute("design") Skirt design, BindingResult bindingResult, Model model){
+
+        if(bindingResult.hasErrors()){
+
+            this.provideFeaturesData(model);
+
+            return "design";
+        }
+
+        log.info("Processing design: " + design);
+
+        return "redirect:/orders/current";
+    }
+
+    private void provideFeaturesData(Model model){
 
         List<Feature> features = Arrays.asList(
                 new Feature("SMA", "Small", SIZE),
@@ -41,24 +67,13 @@ public class DesignSkirtController {
                 new Feature("STR", "Striped", PATTERN)
         );
 
-        Type[] types = Type.values();
+        Feature.Type[] types = Feature.Type.values();
 
-        for(Type type : types){
+        for(Feature.Type type : types){
 
             model.addAttribute(type.toString().toLowerCase(), filterByType(features, type));
         }
 
-        model.addAttribute("design", new Skirt());
-
-        return "design";
-    }
-
-    @PostMapping
-    public String processDesign(Skirt design){
-
-        log.info("Processing design: " + design);
-
-        return "redirect:/orders/current";
     }
 
 }
