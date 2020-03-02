@@ -23,12 +23,12 @@
 
             <h3>We will deliver ordered skirts to...</h3>
 
-            <label for="name">Name: </label>
-            <input type="text" th:field="*{name}"/>
+            <label for="fullName">Name: </label>
+            <input type="text" th:field="*{fullName}"/>
 
             <span class="validationError"
-                  th:if="${#fields.hasErrors('name')}"
-                  th:errors="*{name}">Name Error</span>
+                  th:if="${#fields.hasErrors('fullName')}"
+                  th:errors="*{fullName}">Name Error</span>
             <br/>
 
             <label for="street">Street address: </label>

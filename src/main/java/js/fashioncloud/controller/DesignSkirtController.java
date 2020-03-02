@@ -51,8 +51,6 @@ public class DesignSkirtController {
 
         this.provideFeaturesData(model);
 
-        //model.addAttribute("design", new Skirt());
-
         return "design";
     }
 
