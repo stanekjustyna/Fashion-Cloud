@@ -1,40 +1,64 @@
 package js.fashioncloud.controller;
 
 import js.fashioncloud.model.Feature;
+import js.fashioncloud.model.Order;
 import js.fashioncloud.model.Skirt;
+import js.fashioncloud.repository.FeatureRepository;
+import js.fashioncloud.repository.SkirtRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
-import static js.fashioncloud.model.Feature.Type.*;
 import static js.fashioncloud.model.Feature.filterByType;
 
 @Slf4j
 @Controller
 @RequestMapping("/design")
+@SessionAttributes("order")
 public class DesignSkirtController {
+
+    private final FeatureRepository featureRepository;
+
+    private SkirtRepository skirtRepository;
+
+    @Autowired
+    public DesignSkirtController(FeatureRepository featureRepository, SkirtRepository skirtRepository) {
+
+        this.featureRepository = featureRepository;
+
+        this.skirtRepository = skirtRepository;
+    }
+
+    @ModelAttribute(name = "design")
+    public Skirt skirt(){
+        return new Skirt();
+    }
+
+    @ModelAttribute(name = "order")
+    public Order order(){
+        return new Order();
+    }
 
     @GetMapping
     public String showDesignForm(Model model){
 
         this.provideFeaturesData(model);
 
-        model.addAttribute("design", new Skirt());
+        //model.addAttribute("design", new Skirt());
 
         return "design";
     }
 
     @PostMapping
-    public String processDesign(@Valid @ModelAttribute("design") Skirt design, BindingResult bindingResult, Model model){
+    public String processDesign(@Valid @ModelAttribute("design") Skirt design, BindingResult bindingResult, Model model,
+                                @ModelAttribute Order order){
 
         if(bindingResult.hasErrors()){
 
@@ -43,29 +67,18 @@ public class DesignSkirtController {
             return "design";
         }
 
-        log.info("Processing design: " + design);
+        Skirt saved = skirtRepository.save(design);
+
+        order.addDesign(saved);
 
         return "redirect:/orders/current";
     }
 
     private void provideFeaturesData(Model model){
 
-        List<Feature> features = Arrays.asList(
-                new Feature("SMA", "Small", SIZE),
-                new Feature("MED", "Medium", SIZE),
-                new Feature("LAR", "Large", SIZE),
-                new Feature("SHO", "Short", LENGTH),
-                new Feature("MID", "Middle-length", LENGTH),
-                new Feature("LON", "Long", LENGTH),
-                new Feature("BLA", "Black", COLOR),
-                new Feature("RED", "Red", COLOR),
-                new Feature("GRE", "Grey", COLOR),
-                new Feature("NAV", "Navy", COLOR),
-                new Feature("PLA", "Plain", PATTERN),
-                new Feature("CHE", "Chequered", PATTERN),
-                new Feature("SPO", "Spotted", PATTERN),
-                new Feature("STR", "Striped", PATTERN)
-        );
+        List<Feature> features = new ArrayList<>();
+
+        featureRepository.findAll().forEach(e -> features.add(e));
 
         Feature.Type[] types = Feature.Type.values();
 

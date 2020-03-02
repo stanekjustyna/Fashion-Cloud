@@ -2,21 +2,18 @@ package js.fashioncloud.model;
 
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Data
-@NoArgsConstructor
+@Entity
 public class Skirt {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
     private Date createdAt;
@@ -25,23 +22,25 @@ public class Skirt {
     @Size(min=4, max=32, message="Name should be between 4 and 32 characters long.")
     private String name;
 
+    @ManyToOne(targetEntity = Feature.class)
     @NotNull(message="Specify preferred size.")
-    private String size;
+    private Feature size;
 
+    @ManyToOne(targetEntity = Feature.class)
     @NotNull(message="Specify preferred length.")
-    private String length;
+    private Feature length;
 
+    @ManyToOne(targetEntity = Feature.class)
     @NotNull(message="Specify preferred color.")
-    private String color;
+    private Feature color;
 
+    @ManyToOne(targetEntity = Feature.class)
     @NotNull(message="Specify preferred pattern.")
-    private String pattern;
+    private Feature pattern;
 
-    public Skirt(String name, String size, String length, String color, String pattern) {
-        this.name = name;
-        this.size = size;
-        this.length = length;
-        this.color = color;
-        this.pattern = pattern;
+    @PrePersist
+    void createdAt(){
+        this.createdAt = new Date();
     }
+
 }

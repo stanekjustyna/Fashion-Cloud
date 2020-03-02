@@ -2,91 +2,91 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
-    <head>
-        <title>Fashion Cloud</title>
-    </head>
+<head>
+    <title>Fashion Cloud</title>
+</head>
 
-    <body>
+<body>
 
-        <h1>Design your amazing skirt and we will sew it especially for you! </h1>
+<h1>Design your amazing skirt and we will sew it especially for you! </h1>
 
-        <img th:src="@{images/FashionCloud.jpeg}" width="400" height="300"/>
+<img th:src="@{images/FashionCloud.jpeg}" width="400" height="300"/>
 
-        <form method="POST" th:object="${design}">
+<form method="POST" th:object="${design}">
 
-            <div th:if="${#fields.hasErrors()}">
+    <div th:if="${#fields.hasErrors()}">
                 <span class="validationError">
                     Please correct the problems below and resubmit.
                 </span>
+    </div>
+
+    <div class="feat">
+
+        <div class="feature-group" id="sizes">
+            <h3>Designate your size:</h3>
+            <div th:each="feature : ${size}">
+                <input name="size" type="radio" th:value="${feature.id}"/>
+                <span th:text="${feature.name}">FEATURE</span><br/>
             </div>
+        </div>
 
-            <div class="feat">
+        <span class="validationError"
+              th:if="${#fields.hasErrors('size')}"
+              th:errors="*{size}">Size Error</span>
 
-                <div class="feature-group" id="sizes">
-                    <h3>Designate your size:</h3>
-                    <div th:each="feature : ${size}">
-                        <input name="size" type="radio" th:value="${feature.id}"/>
-                        <span th:text="${feature.name}">FEATURE</span><br/>
-                    </div>
-                </div>
-
-                <span class="validationError"
-                      th:if="${#fields.hasErrors('size')}"
-                      th:errors="*{size}">Size Error</span>
-
-                <div class="feature-group" id="lengths">
-                    <h3>Pick a length for you:</h3>
-                    <div th:each="feature : ${length}">
-                        <input name="length" type="radio" th:value="${feature.id}"/>
-                        <span th:text="${feature.name}">FEATURE</span><br/>
-                    </div>
-                </div>
-
-                <span class="validationError"
-                      th:if="${#fields.hasErrors('length')}"
-                      th:errors="*{length}">Length Error</span>
-
-                <div class="feature-group" id="colors">
-                    <h3>Choose a color:</h3>
-                    <div th:each="feature : ${color}">
-                        <input name="color" type="radio" th:value="${feature.id}"/>
-                        <span th:text="${feature.name}">FEATURE</span><br/>
-                    </div>
-                </div>
-
-                <span class="validationError"
-                      th:if="${#fields.hasErrors('color')}"
-                      th:errors="*{color}">Color Error</span>
-
-                <div class="feature-group" id="patterns">
-                    <h3>Select a pattern:</h3>
-                    <div th:each="feature : ${pattern}">
-                        <input name="pattern" type="radio" th:value="${feature.id}"/>
-                        <span th:text="${feature.name}">FEATURE</span><br/>
-                    </div>
-                </div>
-
-                <span class="validationError"
-                      th:if="${#fields.hasErrors('pattern')}"
-                      th:errors="*{pattern}">Pattern Error</span>
-
+        <div class="feature-group" id="lengths">
+            <h3>Pick a length for you:</h3>
+            <div th:each="feature : ${length}">
+                <input name="length" type="radio" th:value="${feature.id}"/>
+                <span th:text="${feature.name}">FEATURE</span><br/>
             </div>
+        </div>
 
-            <div>
-                <h3>Name your skirt creation:</h3>
-                <input type="text" th:field="*{name}"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('length')}"
+              th:errors="*{length}">Length Error</span>
 
-                <span class="validationError"
-                    th:if="${#fields.hasErrors('name')}"
-                    th:errors="*{name}">Name Error</span>
-
-
-                <br/>
-                <button>Submit your skirt</button>
+        <div class="feature-group" id="colors">
+            <h3>Choose a color:</h3>
+            <div th:each="feature : ${color}">
+                <input name="color" type="radio" th:value="${feature.id}"/>
+                <span th:text="${feature.name}">FEATURE</span><br/>
             </div>
+        </div>
 
-        </form>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('color')}"
+              th:errors="*{color}">Color Error</span>
 
-    </body>
+        <div class="feature-group" id="patterns">
+            <h3>Select a pattern:</h3>
+            <div th:each="feature : ${pattern}">
+                <input name="pattern" type="radio" th:value="${feature.id}"/>
+                <span th:text="${feature.name}">FEATURE</span><br/>
+            </div>
+        </div>
+
+        <span class="validationError"
+              th:if="${#fields.hasErrors('pattern')}"
+              th:errors="*{pattern}">Pattern Error</span>
+
+    </div>
+
+    <div>
+        <h3>Name your skirt creation:</h3>
+        <input type="text" th:field="*{name}"/>
+
+        <span class="validationError"
+              th:if="${#fields.hasErrors('name')}"
+              th:errors="*{name}">Name Error</span>
+
+
+        <br/>
+        <button>Submit your skirt</button>
+    </div>
+
+</form>
+
+</body>
 
 </html>
