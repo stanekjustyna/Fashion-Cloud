@@ -13,5 +13,14 @@
     <body>
         <h1>Welcome to Fashion Cloud</h1>
         <img th:src="@{/images/FashionCloud.jpeg}" width="400" height="300"/>
+
+        <br/>
+
+        <a th:href="@{/design}">Design your skirt.</a>
+
+        <form method="POST" th:action="@{/logout}">
+            <input type="submit" value="Logout"/>
+        </form>
+
     </body>
 </html>

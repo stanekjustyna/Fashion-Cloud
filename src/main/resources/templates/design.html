@@ -12,7 +12,11 @@
 
 <img th:src="@{images/FashionCloud.jpeg}" width="400" height="300"/>
 
-<form method="POST" th:object="${design}">
+<form method="POST" th:action="@{/logout}">
+    <input type="submit" value="Logout"/>
+</form>
+
+<form method="POST" th:action="@{/design}" th:object="${design}">
 
     <div th:if="${#fields.hasErrors()}">
                 <span class="validationError">

@@ -1,9 +1,12 @@
 package js.fashioncloud.controller;
 
 import js.fashioncloud.model.Order;
+import js.fashioncloud.model.User;
 import js.fashioncloud.repository.OrderRepository;
+import js.fashioncloud.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -19,10 +22,12 @@ import javax.validation.Valid;
 public class OrderController {
 
     private OrderRepository orderRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    public OrderController(OrderRepository orderRepository) {
+    public OrderController(OrderRepository orderRepository, UserRepository userRepository) {
         this.orderRepository = orderRepository;
+        this.userRepository = userRepository;
     }
 
     @GetMapping("/current")
@@ -31,12 +36,14 @@ public class OrderController {
     }
 
     @PostMapping
-    public String processOrder(@Valid @ModelAttribute("order") Order order, Errors errors, SessionStatus sessionStatus) {
+    public String processOrder(@Valid @ModelAttribute("order") Order order, Errors errors, SessionStatus sessionStatus,
+                               @AuthenticationPrincipal User user) {
 
         if(errors.hasErrors()){
             return "orderForm";
         }
 
+        order.setUser(user);
         orderRepository.save(order);
         sessionStatus.setComplete();
 

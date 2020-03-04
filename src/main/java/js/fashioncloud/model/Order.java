@@ -50,6 +50,9 @@ public class Order implements Serializable {
     @Digits(integer=3, fraction=0, message="Provide a valid CVV.")
     private String ccCVV;
 
+    @ManyToOne
+    private User user;
+
     @ManyToMany(targetEntity=Skirt.class)
     private List<Skirt> skirts;
 

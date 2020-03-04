@@ -3,8 +3,10 @@ package js.fashioncloud.controller;
 import js.fashioncloud.model.Feature;
 import js.fashioncloud.model.Order;
 import js.fashioncloud.model.Skirt;
+import js.fashioncloud.model.User;
 import js.fashioncloud.repository.FeatureRepository;
 import js.fashioncloud.repository.SkirtRepository;
+import js.fashioncloud.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,12 +31,17 @@ public class DesignSkirtController {
 
     private SkirtRepository skirtRepository;
 
+    private UserRepository userRepository;
+
     @Autowired
-    public DesignSkirtController(FeatureRepository featureRepository, SkirtRepository skirtRepository) {
+    public DesignSkirtController(FeatureRepository featureRepository, SkirtRepository skirtRepository,
+                                 UserRepository userRepository) {
 
         this.featureRepository = featureRepository;
 
         this.skirtRepository = skirtRepository;
+
+        this.userRepository = userRepository;
     }
 
     @ModelAttribute(name = "design")
@@ -47,9 +55,15 @@ public class DesignSkirtController {
     }
 
     @GetMapping
-    public String showDesignForm(Model model){
+    public String showDesignForm(Model model, Principal principal){
 
         this.provideFeaturesData(model);
+
+        String username = principal.getName();
+
+        User user = userRepository.findUserByUsername(username);
+
+        model.addAttribute("user", user);
 
         return "design";
     }
