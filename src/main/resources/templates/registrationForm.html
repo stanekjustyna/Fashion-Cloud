@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Fashion Cloud</title>
+    </head>
+
+    <body>
+        <h1>Register yourself to place an order:</h1>
+        <img th:src="@{/images/FashionCloud.jpeg}" width="400" height="300"/><br/>
+
+        <form method="POST" th:action="@{/register}" id="@{registrationForm}">
+
+            <label for="username">Username: </label>
+            <input type="text" name="username"><br/>
+
+            <label for="password">Password: </label>
+            <input type="password" name="password"><br/>
+
+            <label for="password">Password: </label>
+            <input type="password" name="confirm"><br/>
+
+            <label for="fullname">Fullname: </label>
+            <input type="text" name="fullname"><br/>
+
+            <label for="street">Sreet: </label>
+            <input type="text" name="street"><br/>
+
+            <label for="city">City: </label>
+            <input type="text" name="city"><br/>
+
+            <label for="state">State: </label>
+            <input type="text" name="state"><br/>
+
+            <label for="zip">Zip: </label>
+            <input type="text" name="zip"><br/>
+
+            <label for="phoneNumber">Phone number: </label>
+            <input type="text" name="phoneNumber"><br/>
+
+            <input type="submit" value="Register"/>
+        </form>
+    </body>
+</html>
