@@ -29,9 +29,9 @@ public class DesignSkirtController {
 
     private final FeatureRepository featureRepository;
 
-    private SkirtRepository skirtRepository;
+    private final SkirtRepository skirtRepository;
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Autowired
     public DesignSkirtController(FeatureRepository featureRepository, SkirtRepository skirtRepository,
