@@ -7,6 +7,7 @@
         <meta name="keywords" content="shop, fashion, skirt, design"/>
 
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
 
         <link th:href="@{/styles/style-fragment.css}" rel="stylesheet" />
         <link th:href="@{https://fonts.googleapis.com/css2?family=Quicksand&display=swap}" rel="stylesheet">
@@ -26,11 +27,11 @@
             </a>
             <div class="navbar-links">
                 <ul>
-                    <li><a th:href="@{/design}">Design</a></li>
-                    <li><a th:href="@{#}">Offer</a></li>
-                    <li><a th:href="@{#}">Contact</a></li>
-                    <li><a th:href="@{#}"><i class="fas fa-user"></i></a></li>
-                    <li><a th:href="@{#}"><i class="fas fa-shopping-bag"></i></a></li>
+                    <a th:href="@{/design}"><li>Design</li></a>
+                    <a th:href="@{#}"><li>Offer</li></a>
+                    <a th:href="@{#}"><li>Contact</li></a>
+                    <a th:href="@{#}"><li><i class="fas fa-user"></i></li></a>
+                    <a th:href="@{#}"><li><i class="fas fa-shopping-bag"></i></li></a>
                 </ul>
             </div>
         </nav>
