@@ -18,7 +18,7 @@
     <body>
         <nav class="navbar">
             <div class="brand-logo">
-                <img th:src="@{/images/fashion-logo.png}" class="logo"/>
+                <img th:src="@{/images/fashion-logo.png}" class="logo" alt="Fashion Store. Since 2015 with you."/>
             </div>
             <a th:href="@{#}" class="toggle-button">
                 <span class="bar"></span>
@@ -35,5 +35,27 @@
                 </ul>
             </div>
         </nav>
+        <div class="slideshow">
+            <div class="slides-set">
+                <input type="radio" name="r" id="r1" checked/>
+                <input type="radio" name="r" id="r2"/>
+                <input type="radio" name="r" id="r3"/>
+
+                <div class="slide s1">
+                    <img th:src="@{/images/skirt1.jpg}" class="skirt-photo" alt="Skirt one."/>
+                </div>
+                <div class="slide">
+                    <img th:src="@{/images/skirt2.jpg}" class="skirt-photo" alt="Skirt two."/>
+                </div>
+                <div class="slide">
+                    <img th:src="@{/images/skirt3.jpg}" class="skirt-photo" alt="Skirt three."/>
+                </div>
+            </div>
+            <div class="slides-navigation">
+                <label for="r1" class="bar2"></label>
+                <label for="r2" class="bar2"></label>
+                <label for="r3" class="bar2"></label>
+            </div>
+        </div>
     </body>
 </html>

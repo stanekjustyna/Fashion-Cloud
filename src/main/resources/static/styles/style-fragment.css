@@ -106,5 +106,65 @@ body {
     .navbar-links.active {
         display: flex;
     }
+}
 
+.slideshow {
+    width: 100%;
+    overflow: hidden;
+}
+
+.slides-set {
+    width: 300%;
+    display: flex;
+}
+
+.slide {
+    transition: 0.6s;
+}
+
+.slide .skirt-photo {
+    width: 100vw;
+    height: 60vh;
+    object-fit: cover;
+}
+
+.slides-navigation {
+    width: 50%;
+    position: absolute;
+    display: flex;
+    right: 0;
+    left: 0;
+    margin: auto;
+    justify-content: space-around;
+    transform: translateY(-7vw);
+}
+
+.bar2 {
+    width: 10vw;
+    height: 2.5vw;
+    border: .5vw solid #33333d;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.bar2:hover {
+    border: .5vw solid #ffe5e5;
+    background-color: #ffe5e5;
+}
+
+input[name="r"] {
+    position: absolute;
+    visibility: hidden;
+}
+
+#r1:checked ~ .s1 {
+     margin-left: 0;
+}
+
+#r2:checked ~ .s1 {
+     margin-left: -33.3%;
+}
+
+#r3:checked ~ .s1 {
+     margin-left: -66.6%;
 }
