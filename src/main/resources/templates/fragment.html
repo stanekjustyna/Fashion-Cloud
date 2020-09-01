@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+    <head th:fragment="head">
+        <meta charset="utf-8"/>
+        <meta name="description" content="Fashion Store Application"/>
+        <meta name="keywords" content="shop, store, fashion, skirt, design"/>
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+        <link th:href="@{/styles/style-fragment.css}" rel="stylesheet" />
+        <link th:href="@{https://fonts.googleapis.com/css2?family=Quicksand&display=swap}" rel="stylesheet">
+        <script th:src="@{https://kit.fontawesome.com/c41e5f778c.js}" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <div th:fragment="navbar">
+            <nav class="navbar">
+                <div class="brand-logo">
+                    <img th:src="@{/images/fashion-logo.png}" class="logo" alt="Fashion Store. Since 2015 with you."/>
+                </div>
+                <a th:href="@{#}" class="toggle-button">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </a>
+                <div class="navbar-links">
+                    <ul>
+                        <a th:href="@{/design}"><li>Design</li></a>
+                        <a th:href="@{#}"><li>Offer</li></a>
+                        <a th:href="@{#}"><li>Contact</li></a>
+                        <a th:href="@{#}"><li><i class="fas fa-user"></i></li></a>
+                        <a th:href="@{#}"><li><i class="fas fa-shopping-bag"></i></li></a>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div th:fragment="footer">
+            <footer>
+                <div class="footer-links">
+                    <div class="brand-logo">
+                        <img th:src="@{/images/fashion-logo.png}" class="logo" alt="Fashion Store. Since 2015 with you."/>
+                    </div>
+                    <ul>
+                        <li class="footer-heading">Customer Service</li>
+                        <a th:href="@{#}"><li>Online Shop Terms & Conditions</li></a>
+                        <a th:href="@{#}"><li>Vouchers</li></a>
+                        <a th:href="@{#}"><li>Guarantee</i></li></a>
+                        <a th:href="@{#}"><li>Complaints</i></li></a>
+                        <a th:href="@{#}"><li>Privacy policy</i></li></a>
+                        <a th:href="@{#}"><li>Contact</i></li></a>
+                    </ul>
+                    <ul>
+                        <li class="footer-heading">Payment and delivery</li>
+                        <a th:href="@{#}"><li>Order processing time</li></a>
+                        <a th:href="@{#}"><li>Delivery time and costs</li></a>
+                        <a th:href="@{#}"><li>Form of payment</i></li></a>
+                    </ul>
+                    <ul>
+                        <li class="footer-heading">Customer Zone</li>
+                        <a th:href="@{#}"><li>FAQ</li></a>
+                        <a th:href="@{#}"><li>Order guide</li></a>
+                        <a th:href="@{#}"><li>Your orders</i></li></a>
+                    </ul>
+                    <ul>
+                        <li class="footer-heading">Fashion Store</li>
+                        <a th:href="@{#}"><li>About</li></a>
+                        <a th:href="@{#}"><li>Offer</li></a>
+                    </ul>
+                </div>
+                <h2>Fashion Store &#169 2020</h2>
+            </footer>
+        </div>
+    </body>
+</html>
