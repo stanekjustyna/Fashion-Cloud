@@ -1,31 +1,64 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <title>Fashion Cloud</title>
+
+    <link th:href="@{/styles/style-login.css}" rel="stylesheet" />
+    <title>Fashion Store - login and registration form</title>
+    <th:block th:include="/fragment :: head"></th:block>
 </head>
 
 <body>
-    <h1>Login</h1>
-    <img th:src="@{/images/FashionCloud.jpeg}" width="400" height="300"/><br/>
+    <th:block th:include="/fragment :: navbar"></th:block>
+    <div class="background">
+        <div class="form-box">
+            <div class="button-box">
+                <div class="button-box">
+                    <button type="button" class="toggle-btn" onclick="login()">Log In</button>
+                    <button type="button" class="toggle-btn" onclick="register()">Register</button>
+                    <div id="btn"></div>
+                </div>
+            </div>
 
-    <p>
-        New here? Click <a th:href="@{/register}">here</a> to register.
-    </p>
+            <div th:if="${error}">
+                Unable to login. Check your username and password.
+            </div>
 
-    <div th:if="${error}">
-        Unable to login. Check your username and password.
+            <div id="forms">
+                <form method="POST" th:action="@{/login}" id="loginForm" class="input-group">
+
+                    <input type="text" name="username" id="username" class="input-field" placeholder="Username">
+                    <input type="password" name="password" id="password" class="input-field" placeholder="Password">
+
+                    <input type="submit" class="submit-btn" value="Log in"/>
+                </form>
+
+                <form method="POST" th:action="@{/register}" id="@{registrationForm}" class="input-group">
+
+                    <input type="text" name="username" class="input-field" placeholder="Username">
+
+                    <input type="password" name="password" class="input-field" placeholder="Password">
+
+                    <input type="password" name="confirm" class="input-field" placeholder="Password">
+
+                    <input type="text" name="fullname" class="input-field" placeholder="Full name">
+
+                    <input type="text" name="street" class="input-field" placeholder="Street and home number">
+
+                    <input type="text" name="city" class="input-field" placeholder="City">
+
+                    <input type="text" name="state" class="input-field" placeholder="State">
+
+                    <input type="text" name="zip" class="input-field" placeholder="Zip">
+
+                    <input type="text" name="phoneNumber" class="input-field" placeholder="Phone number">
+
+                    <input type="submit" class="submit-btn" value="Register"/>
+                </form>
+            </div>
+        </div>
     </div>
-
-<form method="POST" th:action="@{/login}" id="loginForm">
-
-    <label for="username">Username: </label>
-    <input type="text" name="username" id="username"><br/>
-
-    <label for="password">Password: </label>
-    <input type="password" name="password" id="password"><br/>
-
-    <input type="submit" value="Login"/>
-</form>
+    <th:block th:include="/fragment :: footer"></th:block>
+    <script th:src="@{/scripts/login-script.js}"></script>
 </body>
 </html>

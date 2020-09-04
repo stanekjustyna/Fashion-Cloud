@@ -1,0 +1,122 @@
+body {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.background {
+    min-width: 100%;
+    min-height: 90vh;
+    background-image: url('/images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.footer {
+    min-width: 20vh;
+}
+
+.form-box {
+    width: 66vh;
+    margin: 10vh 0;
+    background-color: #d9d9d9;
+    opacity: 0.9;
+    border-radius: 2.5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+.button-box {
+    width: 33vh;
+    height: 6.5vh;
+    margin: 4vh auto;
+    box-shadow: 0 0 1vh 0.5vh #858484;
+    border-radius: 5vw;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.toggle-btn {
+    font-family: 'Quicksand', sans-serif;
+    color: #33333d;
+    width: 50%;
+    height: 100%;
+    border-radius: 5vw;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    font-size: 2vh;
+    outline: none;
+}
+
+#btn {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, #e893d2, #a7a5a5);
+    border-radius: 5vw;
+    transition: .5s;
+    z-index:-1;
+}
+
+#forms {
+    width: 132vh;
+    display: flex;
+    margin-left: 65vh;
+}
+
+.input-group {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    transition: .5s;
+}
+
+.input-field {
+    font-family: 'Quicksand', sans-serif;
+    color: #33333d;
+    width: 60%;
+    padding: 1vh 1vh;
+    margin: 0 auto;
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    outline: none;
+    background-color: transparent;
+}
+
+.submit-btn {
+    font-family: 'Quicksand', sans-serif;
+    color: #33333d;
+    width: 50%;
+    margin: 3vh auto 0 auto;
+    background: linear-gradient(to right, #e893d2, #a7a5a5);
+    border-radius: 5vw;
+    outline: none;
+    cursor: pointer;
+    border: 0;
+    height: 6.5vh;
+    box-shadow: 0 0 1vh 0.5vh #858484;
+    font-size: 2vh;
+}
+
+@media all and (max-width: 480px) {
+    .form-box {
+        width: 50vh;
+        margin: 12vh 0;
+    }
+
+    .input-field {
+        width: 50%;
+    }
+}
