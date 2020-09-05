@@ -18,9 +18,11 @@
     <body>
         <div th:fragment="navbar">
             <nav class="navbar">
+                <a th:href="@{/git }">
                 <div class="brand-logo">
                     <img th:src="@{/images/fashion-logo.png}" class="logo" alt="Fashion Store. Since 2015 with you."/>
                 </div>
+                </a>
                 <a th:href="@{#}" class="toggle-button">
                     <span class="bar"></span>
                     <span class="bar"></span>

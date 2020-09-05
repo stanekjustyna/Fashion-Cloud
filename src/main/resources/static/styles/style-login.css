@@ -99,7 +99,7 @@ body {
     font-family: 'Quicksand', sans-serif;
     color: #33333d;
     width: 50%;
-    margin: 3vh auto 0 auto;
+    margin: 3vh auto 3vh auto;
     background: linear-gradient(to right, #e893d2, #a7a5a5);
     border-radius: 5vw;
     outline: none;
@@ -107,6 +107,10 @@ body {
     border: 0;
     height: 6.5vh;
     box-shadow: 0 0 1vh 0.5vh #858484;
+    font-size: 2vh;
+}
+
+::placeholder {
     font-size: 2vh;
 }
 
