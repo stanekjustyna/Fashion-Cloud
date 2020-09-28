@@ -23,8 +23,8 @@ public class Skirt {
     private String name;
 
     @ManyToOne(targetEntity = Feature.class)
-    @NotNull(message="Specify preferred size.")
-    private Feature size;
+    @NotNull(message="Specify preferred shape.")
+    private Feature shape;
 
     @ManyToOne(targetEntity = Feature.class)
     @NotNull(message="Specify preferred length.")
@@ -35,8 +35,12 @@ public class Skirt {
     private Feature color;
 
     @ManyToOne(targetEntity = Feature.class)
-    @NotNull(message="Specify preferred pattern.")
-    private Feature pattern;
+    @NotNull(message="Specify preferred fabric.")
+    private Feature fabric;
+
+    @ManyToOne(targetEntity = Feature.class)
+    @NotNull(message="Specify preferred size.")
+    private Feature size;
 
     @PrePersist
     void createdAt(){

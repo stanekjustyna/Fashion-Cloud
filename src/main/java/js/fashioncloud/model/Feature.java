@@ -22,7 +22,7 @@ public class Feature {
     private final Type type;
 
     public static enum Type{
-        SIZE, LENGTH, COLOR, PATTERN, FABRIC
+        SHAPE, LENGTH, COLOR, FABRIC, SIZE
 
         }
 
