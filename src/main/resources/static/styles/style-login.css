@@ -34,7 +34,7 @@ body {
 .button-box {
     width: 33vh;
     height: 6.5vh;
-    margin: 4vh auto;
+    margin: 2vh auto;
     box-shadow: 0 0 1vh 0.5vh #858484;
     border-radius: 5vw;
     display: flex;
@@ -93,6 +93,17 @@ body {
     border-left: 0;
     outline: none;
     background-color: transparent;
+}
+
+h1 {
+    color: #33333d;
+    margin: 1vh auto;
+    font-size: 2vh;
+}
+
+h1:hover {
+    text-decoration: underline;
+    text-decoration-color: #ffe5e5;
 }
 
 .submit-btn {
