@@ -47,14 +47,28 @@ body {
     display: block;
 }
 
-.navbar-links a:hover {
+.navbar-links a:hover, #logout-btn:hover {
     background-color: #33333d;
 }
 
-.navbar-links a:hover li {
+.navbar-links a:hover li, #logout-btn:hover {
     color: #ffe5e5;
 }
 
+#logout-btn {
+    color: #33333d;
+    font-size: 2vw;
+    height: 100%;
+    border: none;
+    font-family: 'Quicksand', sans-serif;
+    outline: none;
+    background-color: #d9d9d9;
+    padding: 0 3vw;
+}
+
+#logout-btn:hover {
+    cursor: pointer;
+}
 
 .toggle-button {
     position: absolute;
@@ -142,7 +156,7 @@ h2 {
         align-items: flex-start;
     }
 
-    .navbar-links ul {
+    .navbar-links ul, #logout-btn {
         width: 100%;
         flex-direction: column;
     }
@@ -151,9 +165,14 @@ h2 {
         text-align: center;
     }
 
-    .navbar-links a li {
+    .navbar-links a li, #logout-btn {
         font-size: 4vw;
         margin: 2vh 0vw;
+    }
+
+    #logout-btn {
+        margin: auto;
+        padding: 2vh 40%;
     }
 
     .navbar-links.active {

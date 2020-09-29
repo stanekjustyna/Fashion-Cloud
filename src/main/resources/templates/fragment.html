@@ -33,7 +33,16 @@
                         <a th:href="@{/design}"><li>Design</li></a>
                         <a th:href="@{#}"><li>Offer</li></a>
                         <a th:href="@{#}"><li>Contact</li></a>
-                        <a th:href="@{#}"><li><i class="fas fa-user"></i></li></a>
+
+
+                        <a sec:authorize="!isAuthenticated()" th:href="@{/login}"><li><i class="fas fa-user"></i>&nbsp;Log in</li></a>
+
+                        <form id="logout" sec:authorize="isAuthenticated()" method="POST" th:action="@{/logout}">
+                            <button type="submit" id="logout-btn">
+                                <i class="fas fa-user"></i>&nbsp;Log out
+                            </button>
+                        </form>
+
                         <a th:href="@{#}"><li><i class="fas fa-shopping-bag"></i></li></a>
                     </ul>
                 </div>
