@@ -3,37 +3,37 @@
 <head>
     <th:block th:include="/fragment :: head"></th:block>
     <title>Fashion Store - design your skirt</title>
-    <link th:href="@{/styles/style-home.css}" rel="stylesheet" />
+    <link th:href="@{/styles/style-design.css}" rel="stylesheet" />
 </head>
 
 <body>
 
     <th:block th:include="/fragment :: navbar"></th:block>
 
-<h1>Design your amazing skirt and we will sew it especially for you! </h1>
-    
+    <h1>Design your skirt and we will sew it for you. </h1>
 
-<form method="POST" th:action="@{/logout}">
-    <input type="submit" value="Logout"/>
-</form>
+    <form method="POST" th:action="@{/design}" th:object="${design}">
 
-<form method="POST" th:action="@{/design}" th:object="${design}">
-
-    <div th:if="${#fields.hasErrors()}">
-                <span class="validationError">
-                    Please correct the problems below and resubmit.
-                </span>
-    </div>
-
-    <div class="feat">
-
-        <div class="feature-group" id="shape">
-            <h3>Designate your shape:</h3>
-            <div th:each="feature : ${shape}">
-                <input name="shape" type="radio" th:value="${feature.id}"/>
-                <span th:text="${feature.name}">FEATURE</span><br/>
-            </div>
+        <div th:if="${#fields.hasErrors()}">
+            <span class="validationError">
+                Please correct the problems below and resubmit.
+            </span>
         </div>
+
+        <div class="features">
+            <h3>1. Shape: </h3>
+            <div class="feature-group" id="shapes">
+                <div th:each="feature : ${shape}" class="feature-option">
+                    <input name="shape" class="shape" th:id="${feature.name}" type="radio" th:value="${feature.id}"/>
+                    <label th:for="${feature.name}" class="shape-label">
+                        <img th:src="@{${'/images/design/' + feature.name +'.png'}}" class="shape-img" th:alt="${feature.name}"/>
+                        <div class="overlay">
+                            <div class="text" th:text="${feature.name}">Feature name</div>
+                        </div>
+                    </label>
+                </div>
+
+            </div>
 
         <span class="validationError"
               th:if="${#fields.hasErrors('shape')}"
