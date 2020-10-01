@@ -20,6 +20,7 @@ public class Feature {
     private final String id;
     private final String name;
     private final Type type;
+    private final String value;
 
     public static enum Type{
         SHAPE, LENGTH, COLOR, FABRIC, SIZE

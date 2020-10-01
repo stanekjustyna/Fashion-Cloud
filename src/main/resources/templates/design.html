@@ -32,30 +32,21 @@
                         </div>
                     </label>
                 </div>
-
             </div>
 
         <span class="validationError"
               th:if="${#fields.hasErrors('shape')}"
               th:errors="*{shape}">Shape Error</span>
 
-        <div class="feature-group" id="lengths">
-            <h3>Pick a length for you:</h3>
-            <div th:each="feature : ${length}">
-                <input name="length" type="radio" th:value="${feature.id}"/>
-                <span th:text="${feature.name}">FEATURE</span><br/>
-            </div>
-        </div>
-
-        <span class="validationError"
-              th:if="${#fields.hasErrors('length')}"
-              th:errors="*{length}">Length Error</span>
-
-        <div class="feature-group" id="colors">
-            <h3>Choose a color:</h3>
-            <div th:each="feature : ${color}">
-                <input name="color" type="radio" th:value="${feature.id}"/>
-                <span th:text="${feature.name}">FEATURE</span><br/>
+            <h3>2. Color:</h3>
+            <div class="feature-group" id="colors">
+            <div th:each="feature : ${color}" class="feature-option">
+                <input name="color" class="color" th:id="${feature.name}" type="radio" th:value="${feature.id}"/>
+                <label th:for="${feature.name}" class="color-box" th:style="${'background-color: ' + feature.value + ';'}">
+                <div class="overlay">
+                    <div class="text" th:text="${feature.name}">Feature name</div>
+                </div>
+                </label>
             </div>
         </div>
 
@@ -74,6 +65,18 @@
         <span class="validationError"
               th:if="${#fields.hasErrors('fabric')}"
               th:errors="*{fabric}">Fabric Error</span>
+
+            <div class="feature-group" id="lengths">
+                <h3>Pick a length for you:</h3>
+                <div th:each="feature : ${length}">
+                    <input name="length" type="radio" th:value="${feature.id}"/>
+                    <span th:text="${feature.name}">FEATURE</span><br/>
+                </div>
+            </div>
+
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('length')}"
+                  th:errors="*{length}">Length Error</span>
 
         <div class="feature-group" id="sizes">
             <h3>Select a size:</h3>
