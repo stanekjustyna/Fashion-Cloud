@@ -26,7 +26,7 @@
                 <div th:each="feature : ${shape}" class="feature-option">
                     <input name="shape" class="shape" th:id="${feature.name}" type="radio" th:value="${feature.id}"/>
                     <label th:for="${feature.name}" class="shape-label">
-                        <img th:src="@{${'/images/design/' + feature.name +'.png'}}" class="shape-img" th:alt="${feature.name}"/>
+                        <img th:src="@{${'/images/design/shape/' + feature.name +'.png'}}" class="shape-img" th:alt="${feature.name}"/>
                         <div class="overlay">
                             <div class="text" th:text="${feature.name}">Feature name</div>
                         </div>
@@ -54,11 +54,16 @@
               th:if="${#fields.hasErrors('color')}"
               th:errors="*{color}">Color Error</span>
 
+        <h3>3. Fabric:</h3>
         <div class="feature-group" id="fabrics">
-            <h3>Select a fabric:</h3>
-            <div th:each="feature : ${fabric}">
-                <input name="fabric" type="radio" th:value="${feature.id}"/>
-                <span th:text="${feature.name}">FEATURE</span><br/>
+            <div th:each="feature : ${fabric}" class="feature-option">
+                <input name="fabric" class="fabric" th:id="${feature.name}" type="radio" th:value="${feature.id}"/>
+                <label th:for="${feature.name}" class="fabric-label">
+                    <img th:src="@{${'/images/design/fabric/' + feature.name +'.jpg'}}" class="fabric-img" th:alt="${feature.name}"/>
+                    <div class="overlay">
+                        <div class="text" th:text="${feature.name}">Feature name</div>
+                    </div>
+                </label>
             </div>
         </div>
 
@@ -66,11 +71,15 @@
               th:if="${#fields.hasErrors('fabric')}"
               th:errors="*{fabric}">Fabric Error</span>
 
+            <h3>4. Length:</h3>
             <div class="feature-group" id="lengths">
-                <h3>Pick a length for you:</h3>
-                <div th:each="feature : ${length}">
-                    <input name="length" type="radio" th:value="${feature.id}"/>
-                    <span th:text="${feature.name}">FEATURE</span><br/>
+                <div th:each="feature : ${length}" class="feature-option">
+                    <input name="length" class="length" th:id="${feature.name}" type="radio" th:value="${feature.id}"/>
+                    <label th:for="${feature.name}" class="length-label">
+                        <span class="length-text" th:text="${feature.name}">FEATURE</span>
+                        <div class="overlay">
+                        </div>
+                    </label>
                 </div>
             </div>
 
@@ -78,34 +87,36 @@
                   th:if="${#fields.hasErrors('length')}"
                   th:errors="*{length}">Length Error</span>
 
+        <h3>5. Size:</h3>
         <div class="feature-group" id="sizes">
-            <h3>Select a size:</h3>
-            <div th:each="feature : ${size}">
-                <input name="size" type="radio" th:value="${feature.id}"/>
-                <span th:text="${feature.name}">FEATURE</span><br/>
+            <div th:each="feature : ${size}" class="feature-option">
+                <input name="size" class="size" type="radio" th:id="${feature.name}" th:value="${feature.id}"/>
+                <label th:for="${feature.name}" class="size-label">
+                    <span class="size-text" th:text="${feature.name}">FEATURE</span>
+                    <div class="overlay">
+                    </div>
+                </label>
             </div>
         </div>
 
         <span class="validationError"
               th:if="${#fields.hasErrors('size')}"
               th:errors="*{size}">Fabric Error</span>
-
     </div>
 
-    <div>
-        <h3>Name your skirt creation:</h3>
-        <input type="text" th:field="*{name}"/>
+        <div>
+            <h3 id="comments">6. Comments:</h3>
+            <p>Help us sew an ideal skirt. Specify your measurements and preferred length.</p>
+            <textarea th:field="*{comments}" id="comments-area"
+                      rows="5" cols="80">
+            </textarea>
+        </div>
 
-        <span class="validationError"
-              th:if="${#fields.hasErrors('name')}"
-              th:errors="*{name}">Name Error</span>
+        <div id="skirt-btn-container">
+            <button id="skirt-btn">Submit your skirt</button>
+        </div>
 
-
-        <br/>
-        <button>Submit your skirt</button>
-    </div>
-
-</form>
+    </form>
 
     <th:block th:include="/fragment :: footer"></th:block>
 

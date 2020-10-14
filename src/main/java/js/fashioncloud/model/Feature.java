@@ -10,10 +10,10 @@ import javax.persistence.Id;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Data
 @Entity
-@RequiredArgsConstructor
+@Data
 @NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
+@RequiredArgsConstructor
 public class Feature {
 
     @Id

@@ -5,7 +5,6 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Data
@@ -18,9 +17,7 @@ public class Skirt {
 
     private Date createdAt;
 
-    @NotNull
-    @Size(min=4, max=32, message="Name should be between 4 and 32 characters long.")
-    private String name;
+    private String comments;
 
     @ManyToOne(targetEntity = Feature.class)
     @NotNull(message="Specify preferred shape.")
