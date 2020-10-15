@@ -104,7 +104,7 @@ h3 {
    font-size: 2vw;
    color: #33333d;
    text-align: left;
-   margin: 7.5vh 10vw;
+   margin: 5vh 10vw;
 }
 
 #comments {
@@ -138,6 +138,7 @@ p {
 
 #skirt-btn {
     font-family: 'Quicksand', sans-serif;
+    font-size: 1.5vw;
     color: #33333d;
     width: 25%;
     background: #ffe5e5;
@@ -147,6 +148,15 @@ p {
     border: 0;
     height: 8vh;
     box-shadow: 0 0 1vh 0.5vh #858484;
-    font-size: 2vh;
     margin: 7.5vh 0;
+}
+
+input[type=submit] {
+    font-size: 1.5vw;
+}
+
+.validationError {
+    font-size: 1.5vw;
+    margin: 0 10vw;
+    color: #c91d9e;
 }

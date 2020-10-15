@@ -15,13 +15,19 @@
     <form method="POST" th:action="@{/design}" th:object="${design}">
 
         <div th:if="${#fields.hasErrors()}">
-            <span class="validationError">
+            <span class="validationError" id="warning">
+                <i class="fas fa-exclamation-triangle"></i>
                 Please correct the problems below and resubmit.
             </span>
         </div>
 
         <div class="features">
             <h3>1. Shape: </h3>
+
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('shape')}"
+                  th:errors="*{shape}">Shape Error</span>
+
             <div class="feature-group" id="shapes">
                 <div th:each="feature : ${shape}" class="feature-option">
                     <input name="shape" class="shape" th:id="${feature.name}" type="radio" th:value="${feature.id}"/>
@@ -34,11 +40,12 @@
                 </div>
             </div>
 
-        <span class="validationError"
-              th:if="${#fields.hasErrors('shape')}"
-              th:errors="*{shape}">Shape Error</span>
-
             <h3>2. Color:</h3>
+
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('color')}"
+                  th:errors="*{color}">Color Error</span>
+
             <div class="feature-group" id="colors">
             <div th:each="feature : ${color}" class="feature-option">
                 <input name="color" class="color" th:id="${feature.name}" type="radio" th:value="${feature.id}"/>
@@ -50,11 +57,12 @@
             </div>
         </div>
 
-        <span class="validationError"
-              th:if="${#fields.hasErrors('color')}"
-              th:errors="*{color}">Color Error</span>
-
         <h3>3. Fabric:</h3>
+
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('fabric')}"
+                  th:errors="*{fabric}">Fabric Error</span>
+
         <div class="feature-group" id="fabrics">
             <div th:each="feature : ${fabric}" class="feature-option">
                 <input name="fabric" class="fabric" th:id="${feature.name}" type="radio" th:value="${feature.id}"/>
@@ -67,11 +75,12 @@
             </div>
         </div>
 
-        <span class="validationError"
-              th:if="${#fields.hasErrors('fabric')}"
-              th:errors="*{fabric}">Fabric Error</span>
-
             <h3>4. Length:</h3>
+
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('length')}"
+                  th:errors="*{length}">Length Error</span>
+
             <div class="feature-group" id="lengths">
                 <div th:each="feature : ${length}" class="feature-option">
                     <input name="length" class="length" th:id="${feature.name}" type="radio" th:value="${feature.id}"/>
@@ -83,11 +92,12 @@
                 </div>
             </div>
 
-            <span class="validationError"
-                  th:if="${#fields.hasErrors('length')}"
-                  th:errors="*{length}">Length Error</span>
-
         <h3>5. Size:</h3>
+
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('size')}"
+                  th:errors="*{size}">Fabric Error</span>
+
         <div class="feature-group" id="sizes">
             <div th:each="feature : ${size}" class="feature-option">
                 <input name="size" class="size" type="radio" th:id="${feature.name}" th:value="${feature.id}"/>
@@ -99,9 +109,6 @@
             </div>
         </div>
 
-        <span class="validationError"
-              th:if="${#fields.hasErrors('size')}"
-              th:errors="*{size}">Fabric Error</span>
     </div>
 
         <div>
