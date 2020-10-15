@@ -10,19 +10,20 @@ import javax.persistence.Id;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Data
 @Entity
-@RequiredArgsConstructor
+@Data
 @NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
+@RequiredArgsConstructor
 public class Feature {
 
     @Id
     private final String id;
     private final String name;
     private final Type type;
+    private final String value;
 
     public static enum Type{
-        SIZE, LENGTH, COLOR, PATTERN, FABRIC
+        SHAPE, LENGTH, COLOR, FABRIC, SIZE
 
         }
 
